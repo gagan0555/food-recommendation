@@ -56,7 +56,7 @@ const AskQuestion = () => {
                   <Label htmlFor="title">Question Title</Label>
                   <Input
                     id="title"
-                    placeholder="e.g., Best tacos in downtown Austin?"
+                    placeholder="e.g., Best vada pav in Dadar?"
                     required
                   />
                 </div>
@@ -68,7 +68,7 @@ const AskQuestion = () => {
                       <MapPin className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
                       <Input
                         id="location"
-                        placeholder="City, State"
+                        placeholder="e.g., Mumbai, Maharashtra"
                         className="pl-10"
                         required
                       />
@@ -82,14 +82,13 @@ const AskQuestion = () => {
                         <SelectValue placeholder="Select category" />
                       </SelectTrigger>
                       <SelectContent>
-                        <SelectItem value="mexican">Mexican</SelectItem>
-                        <SelectItem value="japanese">Japanese</SelectItem>
-                        <SelectItem value="italian">Italian</SelectItem>
-                        <SelectItem value="chinese">Chinese</SelectItem>
-                        <SelectItem value="indian">Indian</SelectItem>
                         <SelectItem value="street-food">Street Food</SelectItem>
-                        <SelectItem value="vegan">Vegan/Vegetarian</SelectItem>
-                        <SelectItem value="desserts">Desserts</SelectItem>
+                        <SelectItem value="south-indian">South Indian</SelectItem>
+                        <SelectItem value="north-indian">North Indian</SelectItem>
+                        <SelectItem value="biryani">Biryani</SelectItem>
+                        <SelectItem value="chinese">Chinese</SelectItem>
+                        <SelectItem value="desserts">Desserts & Sweets</SelectItem>
+                        <SelectItem value="fast-food">Fast Food</SelectItem>
                         <SelectItem value="other">Other</SelectItem>
                       </SelectContent>
                     </Select>

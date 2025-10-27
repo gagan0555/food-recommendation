@@ -10,58 +10,58 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 const mockQuestions = [
   {
     id: "1",
-    title: "Best tacos in downtown Austin?",
-    location: "Austin, TX",
-    category: "Mexican",
-    description: "Looking for authentic street tacos, preferably near 6th street. Any recommendations?",
+    title: "Best vada pav in Dadar?",
+    location: "Mumbai, Maharashtra",
+    category: "Street Food",
+    description: "Looking for authentic vada pav near Dadar station. Any recommendations?",
     upvotes: 24,
     answers: 8,
     verified: true,
   },
   {
     id: "2",
-    title: "Authentic ramen spots in Brooklyn",
-    location: "Brooklyn, NY",
-    category: "Japanese",
-    description: "New to the area and craving some good ramen. What are the locals' favorites?",
+    title: "Authentic biryani in Hyderabad",
+    location: "Hyderabad, Telangana",
+    category: "Biryani",
+    description: "New to the area and craving some good biryani. What are the locals' favorites?",
     upvotes: 18,
     answers: 12,
   },
   {
     id: "3",
-    title: "Where to find the best pizza in Chicago?",
-    location: "Chicago, IL",
-    category: "Italian",
-    description: "Not talking about deep dish. Looking for thin crust, New York style pizza.",
+    title: "Best dosa places in Bangalore?",
+    location: "Bangalore, Karnataka",
+    category: "South Indian",
+    description: "Looking for crispy dosas with good chutney and sambar.",
     upvotes: 31,
     answers: 15,
     verified: true,
   },
   {
     id: "4",
-    title: "Late night food trucks in Portland",
-    location: "Portland, OR",
+    title: "Late night chaat in Delhi",
+    location: "Delhi",
     category: "Street Food",
-    description: "What are the best food trucks that stay open past midnight?",
+    description: "What are the best chaat stalls that stay open late?",
     upvotes: 12,
     answers: 5,
   },
   {
     id: "5",
-    title: "Vegan burger joints in San Francisco",
-    location: "San Francisco, CA",
-    category: "Vegan",
-    description: "Looking for plant-based burgers that actually taste good!",
+    title: "Best pav bhaji in Pune",
+    location: "Pune, Maharashtra",
+    category: "Street Food",
+    description: "Looking for authentic pav bhaji that's buttery and delicious!",
     upvotes: 27,
     answers: 9,
     verified: true,
   },
   {
     id: "6",
-    title: "Best dim sum in Seattle?",
-    location: "Seattle, WA",
+    title: "Authentic momos in Kolkata?",
+    location: "Kolkata, West Bengal",
     category: "Chinese",
-    description: "Visiting this weekend, would love authentic dim sum recommendations.",
+    description: "Visiting this weekend, would love authentic momo recommendations.",
     upvotes: 15,
     answers: 6,
   },
@@ -103,12 +103,12 @@ const Explore = () => {
               </SelectTrigger>
               <SelectContent>
                 <SelectItem value="all">All Categories</SelectItem>
-                <SelectItem value="mexican">Mexican</SelectItem>
-                <SelectItem value="japanese">Japanese</SelectItem>
-                <SelectItem value="italian">Italian</SelectItem>
                 <SelectItem value="street-food">Street Food</SelectItem>
-                <SelectItem value="vegan">Vegan</SelectItem>
+                <SelectItem value="south-indian">South Indian</SelectItem>
+                <SelectItem value="north-indian">North Indian</SelectItem>
+                <SelectItem value="biryani">Biryani</SelectItem>
                 <SelectItem value="chinese">Chinese</SelectItem>
+                <SelectItem value="desserts">Desserts</SelectItem>
               </SelectContent>
             </Select>
             

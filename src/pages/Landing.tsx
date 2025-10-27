@@ -78,7 +78,7 @@ const Landing = () => {
                 <Award className="h-8 w-8 text-accent" />
               </div>
               <h3 className="font-semibold text-lg">Contribute</h3>
-              <p className="text-sm text-muted-foreground">Share your knowledge and earn community badges</p>
+              <p className="text-sm text-muted-foreground">Share your local food knowledge with the community</p>
             </div>
             
             <div className="text-center space-y-3 p-6 rounded-xl bg-card hover:shadow-lg transition-all duration-300">
@@ -106,7 +106,7 @@ const Landing = () => {
                   <Link to="/auth">Get Started</Link>
                 </Button>
                 <Button size="lg" variant="outline" asChild>
-                  <Link to="/leaderboard">View Leaderboard</Link>
+                  <Link to="/explore">Explore Food</Link>
                 </Button>
               </div>
             </div>

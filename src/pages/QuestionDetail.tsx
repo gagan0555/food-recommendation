@@ -7,7 +7,7 @@ import { Badge } from "@/components/ui/badge";
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import { Textarea } from "@/components/ui/textarea";
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
-import { ThumbsUp, ThumbsDown, MapPin, Clock, Award } from "lucide-react";
+import { ThumbsUp, ThumbsDown, MapPin, Clock } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 
 const QuestionDetail = () => {
@@ -16,11 +16,11 @@ const QuestionDetail = () => {
   const [answer, setAnswer] = useState("");
   
   const question = {
-    title: "Best tacos in downtown Austin?",
-    location: "Austin, TX",
-    category: "Mexican",
-    description: "Looking for authentic street tacos, preferably near 6th street. I'm new to Austin and want to try the real local favorites, not tourist traps. Any recommendations? Bonus points if they're open late!",
-    author: "Sarah M.",
+    title: "Best vada pav in Dadar?",
+    location: "Mumbai, Maharashtra",
+    category: "Street Food",
+    description: "Looking for authentic vada pav near Dadar station. I'm new to Mumbai and want to try the real local favorites. Any recommendations? Prefer places that are hygienic and affordable!",
+    author: "Rahul K.",
     createdAt: "2 hours ago",
     upvotes: 24,
   };
@@ -28,26 +28,24 @@ const QuestionDetail = () => {
   const answers = [
     {
       id: "1",
-      author: "Carlos R.",
-      authorBadge: "Food Expert",
-      content: "You HAVE to try Veracruz All Natural! Their migas taco is legendary. They have a location on East 7th that's not far from downtown. The tortillas are handmade and everything is super fresh. Usually pretty busy but worth the wait.",
+      author: "Priya S.",
+      content: "You must try Aaswad near Dadar station! Their vada pav is legendary and super fresh. The chutney is amazing. Usually crowded but worth the wait. Very affordable at ₹20.",
       upvotes: 15,
       verified: true,
       createdAt: "1 hour ago",
     },
     {
       id: "2",
-      author: "Mike T.",
-      authorBadge: "Local Guide",
-      content: "Torchy's Tacos is a must-visit! Try the Trailer Park taco - it's their most popular. They're open until 3am on weekends which is perfect for late night cravings.",
+      author: "Amit P.",
+      content: "Kirti College vada pav is a must-try! The stall right outside is famous. They make it fresh and the masala is perfect. Only ₹15 and really good quality.",
       upvotes: 8,
       verified: false,
       createdAt: "45 minutes ago",
     },
     {
       id: "3",
-      author: "Jessica L.",
-      content: "For authentic street tacos, check out the taco trucks on East Riverside. There's one near the H-E-B that's amazing and super affordable. Cash only though!",
+      author: "Sneha M.",
+      content: "There's a small stall near Shivaji Park that makes excellent vada pav. Very hygienic and the taste is authentic. Usually has a line but moves fast!",
       upvotes: 12,
       verified: true,
       createdAt: "30 minutes ago",
@@ -157,12 +155,6 @@ const QuestionDetail = () => {
                         </Avatar>
                         <div className="flex items-center gap-2">
                           <span className="font-semibold">{answer.author}</span>
-                          {answer.authorBadge && (
-                            <Badge variant="secondary" className="text-xs">
-                              <Award className="h-3 w-3 mr-1" />
-                              {answer.authorBadge}
-                            </Badge>
-                          )}
                           {answer.verified && (
                             <Badge variant="secondary" className="text-xs">
                               ✓ Verified

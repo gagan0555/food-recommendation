@@ -4,54 +4,42 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
-import { Award, MapPin, Calendar, Edit, ThumbsUp, MessageCircle } from "lucide-react";
+import { MapPin, Calendar, Edit, ThumbsUp, MessageCircle } from "lucide-react";
 import { Link } from "react-router-dom";
 
 const Profile = () => {
   const userProfile = {
-    name: "Sarah Mitchell",
-    location: "Brooklyn, NY",
+    name: "Shivam",
+    location: "Mumbai, Maharashtra",
     joinedDate: "January 2024",
-    points: 2340,
-    rank: 2,
-    badge: "Local Expert",
     stats: {
-      answers: 118,
-      verified: 76,
-      upvotes: 892,
-      questions: 23,
+      answers: 42,
+      questions: 15,
+      upvotes: 238,
     },
-    badges: [
-      { name: "First Answer", icon: "🎯", earned: true },
-      { name: "10 Upvotes", icon: "⭐", earned: true },
-      { name: "Verified Expert", icon: "✓", earned: true },
-      { name: "Top Contributor", icon: "🏆", earned: false },
-      { name: "100 Answers", icon: "💯", earned: false },
-      { name: "Community Hero", icon: "🦸", earned: false },
-    ],
   };
   
   const recentActivity = [
     {
       id: "1",
       type: "answer",
-      title: "Best tacos in downtown Austin?",
+      title: "Best vada pav in Dadar?",
       timestamp: "2 hours ago",
-      upvotes: 15,
+      upvotes: 12,
     },
     {
       id: "2",
       type: "question",
-      title: "Late night pizza delivery in Brooklyn?",
+      title: "Late night biryani in Bandra?",
       timestamp: "1 day ago",
       answers: 8,
     },
     {
       id: "3",
       type: "answer",
-      title: "Vegan options in Manhattan?",
+      title: "South Indian breakfast in Andheri?",
       timestamp: "2 days ago",
-      upvotes: 23,
+      upvotes: 18,
     },
   ];
   
@@ -67,7 +55,7 @@ const Profile = () => {
               <div className="flex flex-col md:flex-row gap-6 items-start">
                 <Avatar className="h-32 w-32">
                   <AvatarFallback className="text-4xl font-bold">
-                    {userProfile.name.split(" ").map(n => n[0]).join("")}
+                    {userProfile.name[0]}
                   </AvatarFallback>
                 </Avatar>
                 
@@ -91,19 +79,6 @@ const Profile = () => {
                       Edit Profile
                     </Button>
                   </div>
-                  
-                  <div className="flex flex-wrap gap-2">
-                    <Badge className="bg-gradient-to-r from-blue-400 to-cyan-500 text-white border-0">
-                      <Award className="h-3 w-3 mr-1" />
-                      {userProfile.badge}
-                    </Badge>
-                    <Badge variant="secondary">
-                      Rank #{userProfile.rank}
-                    </Badge>
-                    <Badge variant="outline" className="text-primary border-primary">
-                      {userProfile.points.toLocaleString()} points
-                    </Badge>
-                  </div>
                 </div>
               </div>
             </CardContent>
@@ -112,7 +87,7 @@ const Profile = () => {
           <div className="grid md:grid-cols-3 gap-6">
             {/* Stats */}
             <div className="md:col-span-2 space-y-6">
-              <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+              <div className="grid grid-cols-3 gap-4">
                 <Card>
                   <CardContent className="pt-6 text-center space-y-1">
                     <p className="text-3xl font-bold text-primary">{userProfile.stats.answers}</p>
@@ -122,8 +97,8 @@ const Profile = () => {
                 
                 <Card>
                   <CardContent className="pt-6 text-center space-y-1">
-                    <p className="text-3xl font-bold text-secondary">{userProfile.stats.verified}</p>
-                    <p className="text-sm text-muted-foreground">Verified</p>
+                    <p className="text-3xl font-bold text-secondary">{userProfile.stats.questions}</p>
+                    <p className="text-sm text-muted-foreground">Questions</p>
                   </CardContent>
                 </Card>
                 
@@ -131,13 +106,6 @@ const Profile = () => {
                   <CardContent className="pt-6 text-center space-y-1">
                     <p className="text-3xl font-bold text-accent">{userProfile.stats.upvotes}</p>
                     <p className="text-sm text-muted-foreground">Upvotes</p>
-                  </CardContent>
-                </Card>
-                
-                <Card>
-                  <CardContent className="pt-6 text-center space-y-1">
-                    <p className="text-3xl font-bold">{userProfile.stats.questions}</p>
-                    <p className="text-sm text-muted-foreground">Questions</p>
                   </CardContent>
                 </Card>
               </div>
@@ -182,34 +150,6 @@ const Profile = () => {
                       </div>
                     </Link>
                   ))}
-                </CardContent>
-              </Card>
-            </div>
-            
-            {/* Badges */}
-            <div>
-              <Card>
-                <CardHeader>
-                  <CardTitle>Badges</CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <div className="grid grid-cols-3 gap-4">
-                    {userProfile.badges.map((badge) => (
-                      <div
-                        key={badge.name}
-                        className={`text-center space-y-2 p-3 rounded-lg ${
-                          badge.earned
-                            ? "bg-primary/10"
-                            : "bg-muted/50 opacity-50"
-                        }`}
-                      >
-                        <div className="text-3xl">{badge.icon}</div>
-                        <p className="text-xs font-medium leading-tight">
-                          {badge.name}
-                        </p>
-                      </div>
-                    ))}
-                  </div>
                 </CardContent>
               </Card>
             </div>

@@ -28,14 +28,6 @@ const Navbar = () => {
               Explore
             </Link>
             <Link
-              to="/leaderboard"
-              className={`text-sm font-medium transition-colors hover:text-primary ${
-                isActive("/leaderboard") ? "text-primary" : "text-foreground"
-              }`}
-            >
-              Leaderboard
-            </Link>
-            <Link
               to="/ask"
               className={`text-sm font-medium transition-colors hover:text-primary ${
                 isActive("/ask") ? "text-primary" : "text-foreground"
