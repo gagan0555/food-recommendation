@@ -6,6 +6,7 @@ import Auth from "./pages/Auth";
 import Profile from "./pages/Profile";
 import QuestionDetail from "./pages/QuestionDetail";
 import AskQuestion from "./pages/AskQuestion";
+import "./App.css";
 
 
 const App = () => {
