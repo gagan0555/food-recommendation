@@ -4,7 +4,11 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
+<<<<<<< HEAD
   "dev": "vite",
+=======
+    "dev": "vite",
+>>>>>>> a883233 (Add @vitejs/plugin-react dependency)
     "build": "vite build",
     "build:dev": "vite build --mode development",
     "lint": "eslint .",
@@ -67,6 +71,10 @@
     "@types/node": "^22.16.5",
     "@types/react": "^18.3.23",
     "@types/react-dom": "^18.3.7",
+<<<<<<< HEAD
+=======
+    "@vitejs/plugin-react": "^5.1.1",
+>>>>>>> a883233 (Add @vitejs/plugin-react dependency)
     "@vitejs/plugin-react-swc": "^3.11.0",
     "autoprefixer": "^10.4.21",
     "eslint": "^9.32.0",
