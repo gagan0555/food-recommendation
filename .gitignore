@@ -5,7 +5,7 @@
 .env*.local
 
 # Dependencies
-
+node_modules/
 dist/
 
 # Logs
