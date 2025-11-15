@@ -10,8 +10,8 @@ dotenv.config();
 const app = express();
 app.use(express.json());
 const allowedOrigins = [
-  'https://foodstalls-frontend.onrender.com',
-  'http://localhost:3000',
+  'https://streetup-frontend.onrender.com',
+  'http://localhost:5000',
   'http://localhost:5173'
 ];
 
