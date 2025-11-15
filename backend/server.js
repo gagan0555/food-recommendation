@@ -8,8 +8,17 @@ import jwt from "jsonwebtoken";
 dotenv.config();
 
 const app = express();
-app.use(cors());
 app.use(express.json());
+const allowedOrigins = [
+  'https://foodstalls-frontend.onrender.com',
+  'http://localhost:3000',
+  'http://localhost:5173'
+];
+
+app.use(cors({
+  origin: allowedOrigins,
+  credentials: true
+}));
 
 const PORT = process.env.PORT || 5000;
 
