@@ -1,6 +1,7 @@
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import { useState, useEffect } from "react";
 import Landing from "./pages/Landing";
+import React from "react";
 import Explore from "./pages/Explore";
 import Auth from "./pages/Auth";
 import Profile from "./pages/Profile";
