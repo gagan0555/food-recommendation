@@ -40,12 +40,12 @@ const App = () => {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={!isLoggedIn ? <Landing />: <Navigate to="/auth" />} />
-        <Route path="/explore" element={isLoggedIn ? <Explore />: <Navigate to="/auth" />}  />
+        <Route path="/" element={ <Landing />} />
+        <Route path="/explore" element={<Explore />}  />
         <Route path="/auth" element={ <Auth /> } />
-        <Route path="/profile" element={isLoggedIn ? <Profile /> : <Navigate to="/auth" />} />
-        <Route path="/ask" element={isLoggedIn ? <AskQuestion /> : <Navigate to="/auth" />} />
-        <Route path="/question/:id" element={isLoggedIn ?  <QuestionDetail />: <Navigate to="/auth" /> } />
+        <Route path="/profile" element={ <Profile /> } />
+        <Route path="/ask" element={ <AskQuestion /> } />
+        <Route path="/question/:id" element={  <QuestionDetail /> } />
         <Route path="*" element={<NotFound />} />
       </Routes>
     </BrowserRouter>
