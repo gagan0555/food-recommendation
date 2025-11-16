@@ -10,21 +10,24 @@ import { useToast } from "@/hooks/use-toast";
 
 const Auth = () => {
   const [isLoading, setIsLoading] = useState(false);
+  const [hasRedirected, setHasRedirected] = useState(false); // Track if redirect already happened
   const { toast } = useToast();
   const navigate = useNavigate();
 
-  // Check if user is already logged in
+  const baseUrl = import.meta.env.VITE_API_BASE_URL || "https://streetup.onrender.com";
+
+  // Check if user is already logged in on mount
   useEffect(() => {
+    if (hasRedirected) return; // Prevent repeated redirects
+
     const token = localStorage.getItem("authToken");
     const user = localStorage.getItem("authUser");
     
-    if (token && user) {
-      // User is logged in, redirect to home or profile
-      navigate("/");
+    if (token && user && window.location.pathname === "/auth") {
+      setHasRedirected(true);
+      navigate("/", { replace: true }); // Use replace to avoid history stack issues
     }
-  }, [navigate]);
-
-  const baseUrl = import.meta.env.VITE_API_BASE_URL || "https://streetup.onrender.com";
+  }, [navigate, hasRedirected]);
 
   const handleAuth = async (e: React.FormEvent, type: "login" | "signup") => {
     e.preventDefault();
@@ -70,8 +73,8 @@ const Auth = () => {
             description: "You have been logged in successfully.",
           });
 
-          // Redirect to home after login
-          setTimeout(() => navigate("/"), 1500);
+          // Navigate immediately to home after login (removed setTimeout)
+          navigate("/", { replace: true });
         }
       } else {
         // Auto login after signup
@@ -96,7 +99,8 @@ const Auth = () => {
         localStorage.setItem("authToken", loginData.token);
         localStorage.setItem("authUser", JSON.stringify(loginData.user));
 
-        setTimeout(() => navigate("/"), 1500);
+        // Navigate immediately to home after signup (removed setTimeout)
+        navigate("/", { replace: true });
       }
     } catch (error) {
       toast({
@@ -203,4 +207,3 @@ const Auth = () => {
 };
 
 export default Auth;
-
