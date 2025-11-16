@@ -13,9 +13,10 @@ import QuestionDetail from "./pages/QuestionDetail";
 import AskQuestion from "./pages/AskQuestion";
 import "./App.css";
 import NotFound from "./pages/NotFound";
+
 const queryClient = new QueryClient();
+
 const App = () => {
-   
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [loading, setLoading] = useState(true);
 
@@ -25,7 +26,6 @@ const App = () => {
     setIsLoggedIn(!!token);
     setLoading(false);
 
-    // Listen for storage changes (login/logout from other tabs or pages)
     const handleStorageChange = () => {
       const updatedToken = localStorage.getItem("authToken");
       setIsLoggedIn(!!updatedToken);
@@ -38,17 +38,28 @@ const App = () => {
   if (loading) return <div>Loading...</div>; // Show loading while checking auth
 
   return (
-    <BrowserRouter>
-      <Routes>
-        <Route path="/" element={ <Landing />} />
-        <Route path="/explore" element={<Explore />}  />
-        <Route path="/auth" element={ <Auth /> } />
-        <Route path="/profile" element={ <Profile /> } />
-        <Route path="/ask" element={ <AskQuestion /> } />
-        <Route path="/question/:id" element={  <QuestionDetail /> } />
-        <Route path="*" element={<NotFound />} />
-      </Routes>
-    </BrowserRouter>
+    <QueryClientProvider client={queryClient}>
+      <TooltipProvider>
+        <Toaster />
+        <Sonner />
+        <BrowserRouter>
+          <Routes>
+            <Route path="/" element={<Landing />} />
+            <Route path="/explore" element={<Explore />} />
+            <Route path="/auth" element={<Auth />} />
+            <Route
+              path="/profile"
+              element={
+                isLoggedIn ? <Profile /> : <Navigate to="/auth" replace />
+              }
+            />
+            <Route path="/ask" element={<AskQuestion />} />
+            <Route path="/question/:id" element={<QuestionDetail />} />
+            <Route path="*" element={<NotFound />} />
+          </Routes>
+        </BrowserRouter>
+      </TooltipProvider>
+    </QueryClientProvider>
   );
 };
 
