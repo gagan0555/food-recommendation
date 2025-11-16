@@ -42,7 +42,7 @@ const App = () => {
       <Routes>
         <Route path="/" element={!isLoggedIn ? <Landing />: <Navigate to="/auth" />} />
         <Route path="/explore" element={isLoggedIn ? <Explore />: <Navigate to="/auth" />}  />
-        <Route path="/auth" element={!isLoggedIn ? <Auth /> : <Navigate to="/" />} />
+        <Route path="/auth" element={ <Auth /> } />
         <Route path="/profile" element={isLoggedIn ? <Profile /> : <Navigate to="/auth" />} />
         <Route path="/ask" element={isLoggedIn ? <AskQuestion /> : <Navigate to="/auth" />} />
         <Route path="/question/:id" element={isLoggedIn ?  <QuestionDetail />: <Navigate to="/auth" /> } />
