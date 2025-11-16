@@ -11,7 +11,7 @@ import Profile from "./pages/Profile";
 import QuestionDetail from "./pages/QuestionDetail";
 import AskQuestion from "./pages/AskQuestion";
 import "./App.css";
-
+import NotFound from "./pages/NotFound";
 
 const App = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
