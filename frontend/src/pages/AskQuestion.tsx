@@ -22,7 +22,7 @@ const AskQuestion = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const { toast } = useToast();
   const navigate = useNavigate();
-  const baseUrl = import.meta.env.VITE_API_BASE_URL || "http://localhost:5000";
+  const baseUrl = import.meta.env.VITE_API_BASE_URL || "https://streetup.onrender.com";
 
   // Save location to localStorage whenever it changes
   useEffect(() => {
