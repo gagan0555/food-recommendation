@@ -74,12 +74,29 @@ const Auth = () => {
           setTimeout(() => navigate("/"), 1500);
         }
       } else {
+        // Auto login after signup
         toast({
           title: "Success!",
-          description: "Account created successfully. Please login.",
+          description: "Account created successfully. Logging you in...",
         });
-        // Clear form and switch to login tab
-        form.reset();
+
+        // Login immediately after signup
+        const loginResponse = await fetch(`${baseUrl}/login`, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ email: payload.email, password: payload.password }),
+        });
+        const loginData = await loginResponse.json();
+
+        if (!loginResponse.ok) {
+          throw new Error(loginData.error || "Login failed after signup.");
+        }
+
+        // Store token and user data
+        localStorage.setItem("authToken", loginData.token);
+        localStorage.setItem("authUser", JSON.stringify(loginData.user));
+
+        setTimeout(() => navigate("/"), 1500);
       }
     } catch (error) {
       toast({
@@ -186,3 +203,4 @@ const Auth = () => {
 };
 
 export default Auth;
+
