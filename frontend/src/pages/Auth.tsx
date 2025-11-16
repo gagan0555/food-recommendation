@@ -24,7 +24,7 @@ const Auth = () => {
     }
   }, [navigate]);
 
-  const baseUrl = import.meta.env.VITE_API_BASE_URL || "http://localhost:5000";
+  const baseUrl = import.meta.env.VITE_API_BASE_URL || "https://streetup.onrender.com";
 
   const handleAuth = async (e: React.FormEvent, type: "login" | "signup") => {
     e.preventDefault();
