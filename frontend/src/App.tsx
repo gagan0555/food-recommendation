@@ -44,6 +44,7 @@ const App = () => {
         <Route path="/profile" element={isLoggedIn ? <Profile /> : <Navigate to="/auth" />} />
         <Route path="/ask" element={isLoggedIn ? <AskQuestion /> : <Navigate to="/auth" />} />
         <Route path="/question/:id" element={ <QuestionDetail /> } />
+        <Route path="*" element={<NotFound />} />
       </Routes>
     </BrowserRouter>
   );
