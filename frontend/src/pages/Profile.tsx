@@ -23,7 +23,7 @@ const Profile = () => {
   const { toast } = useToast();
   const navigate = useNavigate();
 
-  const baseUrl = import.meta.env.VITE_API_BASE_URL || "http://localhost:5000";
+  const baseUrl = import.meta.env.VITE_API_BASE_URL || "https://streetup.onrender.com";
 
   // Fetch user profile on component mount
   useEffect(() => {
