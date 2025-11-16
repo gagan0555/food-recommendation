@@ -168,7 +168,7 @@ const Auth = () => {
                   />
                 </div>
                 <Button type="submit" className="w-full" disabled={isLoading}>
-                  {isLoading ? "Creating account..." : "Sign Up"}
+                  {isLoading ? "Creating account..." : "Create account"}
                 </Button>
               </form>
             </TabsContent>
