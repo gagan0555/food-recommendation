@@ -35,7 +35,7 @@ const QuestionDetail = () => {
   const [loading, setLoading] = useState(true);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const { toast } = useToast();
-  const baseUrl = import.meta.env.VITE_API_BASE_URL || "http://localhost:5000";
+  const baseUrl = import.meta.env.VITE_API_BASE_URL || "https://streetup.onrender.com";
 
   useEffect(() => {
     const fetchData = async () => {
