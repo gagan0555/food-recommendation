@@ -15,7 +15,7 @@ import "./App.css";
 import NotFound from "./pages/NotFound";
 const queryClient = new QueryClient();
 const App = () => {
-    <QueryClientProvider client={queryClient}>
+   
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [loading, setLoading] = useState(true);
 
