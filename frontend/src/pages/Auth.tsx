@@ -8,7 +8,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Utensils } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 
-const auth = () => {
+const Auth = () => {
   const [isLoading, setIsLoading] = useState(false);
   const { toast } = useToast();
   const navigate = useNavigate();
@@ -202,5 +202,5 @@ const auth = () => {
   );
 };
 
-export default auth;
+export default Auth;
 
