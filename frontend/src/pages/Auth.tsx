@@ -99,7 +99,7 @@ const Auth = () => {
           <div className="flex justify-center mb-2">
             <Utensils className="h-8 w-8 text-primary" />
           </div>
-          <CardTitle className="text-2xl">Foodstalls Community</CardTitle>
+          <CardTitle className="text-2xl">Street Up Community</CardTitle>
           <CardDescription>Share and discover authentic food recommendations</CardDescription>
         </CardHeader>
         
