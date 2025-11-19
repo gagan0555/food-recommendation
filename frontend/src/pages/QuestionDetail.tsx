@@ -6,7 +6,7 @@ import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { useToast } from "@/hooks/use-toast";
-import { MapPin, Clock, User } from "lucide-react";
+import { MapPin, Clock, User, ThumbsUp, ThumbsDown } from "lucide-react";
 
 interface Question {
   _id: string;
@@ -25,6 +25,7 @@ interface Answer {
   upvotes: number;
   downvotes: number;
   createdAt: string;
+  userVotes?: Array<{ userId: string; type: "upvote" | "downvote" }>;
 }
 
 const QuestionDetail = () => {
@@ -34,9 +35,11 @@ const QuestionDetail = () => {
   const [answerContent, setAnswerContent] = useState("");
   const [loading, setLoading] = useState(true);
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [votingAnswerId, setVotingAnswerId] = useState<string | null>(null);
   const { toast } = useToast();
   const baseUrl = import.meta.env.VITE_API_BASE_URL || "https://streetup.onrender.com";
 
+  // Fetch question and answers
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -73,6 +76,59 @@ const QuestionDetail = () => {
     }
   }, [id, baseUrl, toast]);
 
+  // Handle upvote/downvote
+  const handleVote = async (answerId: string, type: "upvote" | "downvote") => {
+    const token = localStorage.getItem("authToken");
+    
+    if (!token) {
+      toast({
+        title: "Login Required",
+        description: "Please log in to vote on answers",
+        variant: "destructive",
+      });
+      return;
+    }
+
+    try {
+      setVotingAnswerId(answerId);
+      const response = await fetch(`${baseUrl}/answers/${answerId}/${type}`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+      });
+
+      const data = await response.json();
+
+      if (!response.ok) {
+        throw new Error(data.error || `Failed to ${type}`);
+      }
+
+      toast({
+        title: "Success!",
+        description: `You ${type === "upvote" ? "upvoted" : "downvoted"} this answer`,
+      });
+
+      // Refresh answers to show updated vote counts
+      const answersRes = await fetch(`${baseUrl}/answers/${id}`);
+      if (answersRes.ok) {
+        const answersData = await answersRes.json();
+        setAnswers(answersData);
+      }
+    } catch (err) {
+      toast({
+        title: "Error",
+        description: (err as Error).message,
+        variant: "destructive",
+      });
+      console.error(`${type} error:`, err);
+    } finally {
+      setVotingAnswerId(null);
+    }
+  };
+
+  // Handle submit answer
   const handleSubmitAnswer = async (e: React.FormEvent) => {
     e.preventDefault();
 
@@ -85,15 +141,24 @@ const QuestionDetail = () => {
       return;
     }
 
+    const token = localStorage.getItem("authToken");
+    if (!token) {
+      toast({
+        title: "Login Required",
+        description: "Please log in to post an answer",
+        variant: "destructive",
+      });
+      return;
+    }
+
     try {
       setIsSubmitting(true);
-      const token = localStorage.getItem("authToken");
 
       const response = await fetch(`${baseUrl}/answers`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
-          ...(token && { Authorization: `Bearer ${token}` }),
+          Authorization: `Bearer ${token}`,
         },
         body: JSON.stringify({
           question_id: id,
@@ -198,12 +263,27 @@ const QuestionDetail = () => {
                       </span>
                     </div>
                     <p className="text-gray-700 mb-4">{answer.content}</p>
-                    <div className="flex gap-4">
-                      <button className="text-sm text-blue-600 hover:text-blue-800">
-                        👍 Upvote ({answer.upvotes})
+
+                    {/* Vote Buttons */}
+                    <div className="flex gap-4 pt-4 border-t">
+                      <button
+                        onClick={() => handleVote(answer._id, "upvote")}
+                        disabled={votingAnswerId === answer._id}
+                        className="flex items-center gap-2 text-sm text-blue-600 hover:text-blue-800 hover:bg-blue-50 px-3 py-2 rounded transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+                      >
+                        <ThumbsUp size={16} />
+                        <span>Upvote</span>
+                        <span className="font-semibold">({answer.upvotes})</span>
                       </button>
-                      <button className="text-sm text-red-600 hover:text-red-800">
-                        👎 Downvote ({answer.downvotes})
+
+                      <button
+                        onClick={() => handleVote(answer._id, "downvote")}
+                        disabled={votingAnswerId === answer._id}
+                        className="flex items-center gap-2 text-sm text-red-600 hover:text-red-800 hover:bg-red-50 px-3 py-2 rounded transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+                      >
+                        <ThumbsDown size={16} />
+                        <span>Downvote</span>
+                        <span className="font-semibold">({answer.downvotes})</span>
                       </button>
                     </div>
                   </CardContent>
