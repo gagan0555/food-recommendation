@@ -10,7 +10,7 @@ dotenv.config();
 const app = express();
 app.use(express.json());
 const allowedOrigins = [
-  'https://streetup-frontend.onrender.com','https://street-up-xguk.onrender.com',
+  'https://streetup-frontend.onrender.com',
   'http://localhost:5000',
   'http://localhost:5173'
 ];
